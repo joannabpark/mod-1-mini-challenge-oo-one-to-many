@@ -27,16 +27,20 @@ class Restaurant
 
   def print_menu
     self.menu_items.map do |item_instance|
-    p "#{item_instance.dish_name}: #{item_instance.price}"
+    "#{item_instance.dish_name}: #{item_instance.price}"
     end
   end
 
-  # def self.biggest_menu
- 
-  # end
+  def self.biggest_menu
+    self.all.max_by do |restaurant_instance|
+      restaurant_instance.menu_items.count
+    end
+  end
 
-  # def tasting_menu_cost
-    
-  # end
+  def tasting_menu_cost
+    self.menu_items.sum do |item_instance|
+      item_instance.price
+    end
+  end
 
 end # end of Restaurant class
